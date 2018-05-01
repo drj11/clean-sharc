@@ -1,5 +1,10 @@
-# clean-sharc
-How to clean your sharc environment
+# How to clean your sharc environment
+
+Short version:
+
+`mv ~/.bash_profile ~/.old_bash_profile`
+
+## longer version
 
 `exec env - HOME=$HOME bash`
 
@@ -19,6 +24,8 @@ alias ls='ls --color=auto'
 ```
 
 The alias is set in `/etc/profile.d/colorls.sh`.
-Where is that sourced from?
-Perhaps it is `/etc/bashrc` ?
 
+For login shells, the system wide `/etc/profile` will source this file.
+
+For other shells, they will (typically) source `~/.bashrc` which sources `/etc/bashrc`,
+which also sources the contents of `/etc/profile/*.sh` in a loop.
